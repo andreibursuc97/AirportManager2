@@ -1,12 +1,17 @@
 package BLL;
 
+import dao.FlightDao;
+import model.FlightEntity;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet(name="welcomeServlet", urlPatterns="/WelcomeServlet")
 public class WelcomeServlet extends HttpServlet {
@@ -15,8 +20,15 @@ public class WelcomeServlet extends HttpServlet {
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
+        FlightDao flightDao = new FlightDao();
+        Cookie[] cookies = request.getCookies();
+        String n="";
+        for (Cookie cookie : cookies) {
 
-        String n = request.getParameter("username");
+            if ("Adminlogged".equals(cookie.getName())) {
+                n=cookie.getValue();
+            }
+        }
         out.print("<head>\n" +
                 "<style>\n" +
                 "#customers {\n" +
@@ -52,10 +64,28 @@ public class WelcomeServlet extends HttpServlet {
                 "    <th>Departure date</th>\n" +
                 "    <th>Arrival city</th>\n" +
                 "    <th>Arrival date</th>\n" +
-                "  </tr>\n"+
-                "</table>");
+                "  </tr>\n");
+        List<FlightEntity> flightEntities = flightDao.getAllFlights();
+        for(FlightEntity flightEntity:flightEntities)
+        {
+            out.print("<tr>\n" +
+                    "    <td>"+ flightEntity.getId() +"</td>\n" +
+                    "    <td>"+ flightEntity.getAirplaneType() +"</td>\n" +
+                    "    <td>"+ flightEntity.getDepartureCityName() +"</td>\n" +
+                    "    <td>"+ flightEntity.getDepartureDate() +"</td>\n" +
+                    "    <td>"+ flightEntity.getArrivalCityName() +"</td>\n" +
+                    "    <td>"+ flightEntity.getArrivalDate() +"</td>\n" +
+                    "  </tr>");
+        }
+
+        out.print("</table>");
 
 
         out.close();
     }
-}
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doPost(request,response);
+    }
+    }

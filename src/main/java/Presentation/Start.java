@@ -1,12 +1,12 @@
 package Presentation;
 
-import dao.LoginDAO;
+import dao.AdminDAO;
 
 public class Start {
 
     public static void main (String[] args)
     {
-        LoginDAO loginDAO = new LoginDAO();
+        AdminDAO loginDAO = new AdminDAO();
         loginDAO.login("admin","admin");
     }
 }

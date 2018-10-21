@@ -1108,177 +1108,140 @@
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
     <table id="278" parent="2" name="administrator"/>
-    <table id="279" parent="2" name="city"/>
-    <table id="280" parent="2" name="clients"/>
-    <table id="281" parent="2" name="flight"/>
-    <column id="282" parent="278" name="id">
+    <table id="279" parent="2" name="clients"/>
+    <table id="280" parent="2" name="flight"/>
+    <column id="281" parent="278" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="283" parent="278" name="username">
+    <column id="282" parent="278" name="username">
       <Position>2</Position>
       <DataType>char(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="284" parent="278" name="password_admin">
+    <column id="283" parent="278" name="password_admin">
       <Position>3</Position>
-      <DataType>binary(64)|0s</DataType>
+      <DataType>binary(32)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="285" parent="278" name="id">
+    <index id="284" parent="278" name="id">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="286" parent="278" name="PRIMARY">
+    <key id="285" parent="278" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="287" parent="278" name="id">
+    <key id="286" parent="278" name="id">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>id</UnderlyingIndexName>
     </key>
-    <column id="288" parent="279" name="id">
+    <column id="287" parent="279" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="289" parent="279" name="city_name">
+    <column id="288" parent="279" name="username">
       <Position>2</Position>
       <DataType>char(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="290" parent="279" name="longitude">
+    <column id="289" parent="279" name="nume">
       <Position>3</Position>
       <DataType>char(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="291" parent="279" name="latitude">
-      <Position>4</Position>
-      <DataType>char(20)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="292" parent="279" name="id">
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-      <Type>btree</Type>
-    </index>
-    <key id="293" parent="279" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <key id="294" parent="279" name="id">
-      <ColNames>id</ColNames>
-      <UnderlyingIndexName>id</UnderlyingIndexName>
-    </key>
-    <column id="295" parent="280" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="296" parent="280" name="username">
-      <Position>2</Position>
-      <DataType>char(20)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="297" parent="280" name="nume">
-      <Position>3</Position>
-      <DataType>char(20)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="298" parent="280" name="password_client">
+    <column id="290" parent="279" name="password_client">
       <Position>4</Position>
       <DataType>binary(32)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="299" parent="280" name="id">
+    <index id="291" parent="279" name="id">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="300" parent="280" name="PRIMARY">
+    <key id="292" parent="279" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="301" parent="280" name="id">
+    <key id="293" parent="279" name="id">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>id</UnderlyingIndexName>
     </key>
-    <column id="302" parent="281" name="id">
+    <column id="294" parent="280" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="303" parent="281" name="airplane_type">
+    <column id="295" parent="280" name="airplane_type">
       <Position>2</Position>
       <DataType>char(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="304" parent="281" name="departure_city_id">
+    <column id="296" parent="280" name="departure_city_name">
       <Position>3</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>char(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="305" parent="281" name="departure_date">
+    <column id="297" parent="280" name="departure_city_longitude">
       <Position>4</Position>
       <DataType>char(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="306" parent="281" name="arrival_city_id">
+    <column id="298" parent="280" name="departure_city_latitude">
       <Position>5</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>char(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="307" parent="281" name="arrival_date">
+    <column id="299" parent="280" name="departure_date">
       <Position>6</Position>
       <DataType>char(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="308" parent="281" name="id">
+    <column id="300" parent="280" name="arrival_city_name">
+      <Position>7</Position>
+      <DataType>char(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="301" parent="280" name="arrival_city_longitude">
+      <Position>8</Position>
+      <DataType>char(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="302" parent="280" name="arrival_city_latitude">
+      <Position>9</Position>
+      <DataType>char(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="303" parent="280" name="arrival_date">
+      <Position>10</Position>
+      <DataType>char(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="304" parent="280" name="id">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="309" parent="281" name="departure_city_id">
-      <ColNames>departure_city_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="310" parent="281" name="arrival_city_id">
-      <ColNames>arrival_city_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="311" parent="281" name="PRIMARY">
+    <key id="305" parent="280" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="312" parent="281" name="id">
+    <key id="306" parent="280" name="id">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>id</UnderlyingIndexName>
     </key>
-    <foreign-key id="313" parent="281" name="flight_ibfk_1">
-      <ColNames>departure_city_id</ColNames>
-      <RefSchemaName>airport-schedule</RefSchemaName>
-      <RefTableName>city</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="314" parent="281" name="flight_ibfk_2">
-      <ColNames>arrival_city_id</ColNames>
-      <RefSchemaName>airport-schedule</RefSchemaName>
-      <RefTableName>city</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
   </database-model>
 </dataSource>

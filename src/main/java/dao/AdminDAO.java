@@ -8,10 +8,10 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
 
-public class LoginDAO {
+public class AdminDAO {
 
-    EntityManager entityManager;
-    EntityManagerFactory entityManagerFactory;
+    private EntityManager entityManager;
+    private EntityManagerFactory entityManagerFactory;
 
     public boolean login(String username, String parola)
     {

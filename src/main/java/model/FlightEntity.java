@@ -5,12 +5,17 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "flight", schema = "airport-schedule", catalog = "")
+@NamedQuery(name="flight.getAllFlights", query = "FROM FlightEntity ")
 public class FlightEntity {
     private int id;
     private String airplaneType;
-    private Integer departureCityId;
+    private String departureCityName;
+    private String departureCityLongitude;
+    private String departureCityLatitude;
     private String departureDate;
-    private Integer arrivalCityId;
+    private String arrivalCityName;
+    private String arrivalCityLongitude;
+    private String arrivalCityLatitude;
     private String arrivalDate;
 
     @Id
@@ -34,13 +39,33 @@ public class FlightEntity {
     }
 
     @Basic
-    @Column(name = "departure_city_id")
-    public Integer getDepartureCityId() {
-        return departureCityId;
+    @Column(name = "departure_city_name")
+    public String getDepartureCityName() {
+        return departureCityName;
     }
 
-    public void setDepartureCityId(Integer departureCityId) {
-        this.departureCityId = departureCityId;
+    public void setDepartureCityName(String departureCityName) {
+        this.departureCityName = departureCityName;
+    }
+
+    @Basic
+    @Column(name = "departure_city_longitude")
+    public String getDepartureCityLongitude() {
+        return departureCityLongitude;
+    }
+
+    public void setDepartureCityLongitude(String departureCityLongitude) {
+        this.departureCityLongitude = departureCityLongitude;
+    }
+
+    @Basic
+    @Column(name = "departure_city_latitude")
+    public String getDepartureCityLatitude() {
+        return departureCityLatitude;
+    }
+
+    public void setDepartureCityLatitude(String departureCityLatitude) {
+        this.departureCityLatitude = departureCityLatitude;
     }
 
     @Basic
@@ -54,13 +79,33 @@ public class FlightEntity {
     }
 
     @Basic
-    @Column(name = "arrival_city_id")
-    public Integer getArrivalCityId() {
-        return arrivalCityId;
+    @Column(name = "arrival_city_name")
+    public String getArrivalCityName() {
+        return arrivalCityName;
     }
 
-    public void setArrivalCityId(Integer arrivalCityId) {
-        this.arrivalCityId = arrivalCityId;
+    public void setArrivalCityName(String arrivalCityName) {
+        this.arrivalCityName = arrivalCityName;
+    }
+
+    @Basic
+    @Column(name = "arrival_city_longitude")
+    public String getArrivalCityLongitude() {
+        return arrivalCityLongitude;
+    }
+
+    public void setArrivalCityLongitude(String arrivalCityLongitude) {
+        this.arrivalCityLongitude = arrivalCityLongitude;
+    }
+
+    @Basic
+    @Column(name = "arrival_city_latitude")
+    public String getArrivalCityLatitude() {
+        return arrivalCityLatitude;
+    }
+
+    public void setArrivalCityLatitude(String arrivalCityLatitude) {
+        this.arrivalCityLatitude = arrivalCityLatitude;
     }
 
     @Basic
@@ -80,14 +125,18 @@ public class FlightEntity {
         FlightEntity that = (FlightEntity) o;
         return id == that.id &&
                 Objects.equals(airplaneType, that.airplaneType) &&
-                Objects.equals(departureCityId, that.departureCityId) &&
+                Objects.equals(departureCityName, that.departureCityName) &&
+                Objects.equals(departureCityLongitude, that.departureCityLongitude) &&
+                Objects.equals(departureCityLatitude, that.departureCityLatitude) &&
                 Objects.equals(departureDate, that.departureDate) &&
-                Objects.equals(arrivalCityId, that.arrivalCityId) &&
+                Objects.equals(arrivalCityName, that.arrivalCityName) &&
+                Objects.equals(arrivalCityLongitude, that.arrivalCityLongitude) &&
+                Objects.equals(arrivalCityLatitude, that.arrivalCityLatitude) &&
                 Objects.equals(arrivalDate, that.arrivalDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, airplaneType, departureCityId, departureDate, arrivalCityId, arrivalDate);
+        return Objects.hash(id, airplaneType, departureCityName, departureCityLongitude, departureCityLatitude, departureDate, arrivalCityName, arrivalCityLongitude, arrivalCityLatitude, arrivalDate);
     }
 }
