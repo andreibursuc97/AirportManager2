@@ -34,10 +34,15 @@ public class HelloForm extends HttpServlet {
         {
             //RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
             //request.setAttribute("errorMessage", "Invalid user or password");
-            response.sendRedirect("index.jsp");
+
+//            response.sendRedirect("index.jsp");
+            out.println("<meta http-equiv='refresh' content='2;URL=index.jsp'>");//redirects after 3 seconds
             out.println("<script type=\"text/javascript\">");
-            out.println("alert('Username sau parola gresita');");
+            out.println("alert('User or password incorrect');");
+            out.println("location='index.jsp';");
             out.println("</script>");
+//            RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
+//            rd.forward(request,response);
 
         }
     }

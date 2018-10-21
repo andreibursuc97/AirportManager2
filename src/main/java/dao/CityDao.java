@@ -1,5 +1,6 @@
 package dao;
 
+import model.CityEntity;
 import model.FlightEntity;
 
 import javax.persistence.EntityManager;
@@ -8,21 +9,20 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
 
-public class FlightDao {
+public class CityDao {
 
     private EntityManager entityManager;
     private EntityManagerFactory entityManagerFactory;
 
-    public List<FlightEntity> getAllFlights()
+    public CityEntity getCityById(Integer cityId)
     {
         Encrypt code = new Encrypt();
 
         entityManagerFactory = Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
         entityManager = entityManagerFactory.createEntityManager();
-        Query query = entityManager.createNamedQuery("FlightEntity.getAllFlights");
-        List<FlightEntity> flightEntityList = query.getResultList();
+        CityEntity cityEntity = entityManager.find(CityEntity.class,cityId);
 
         entityManagerFactory.close();
-        return flightEntityList;
+        return cityEntity;
     }
 }
