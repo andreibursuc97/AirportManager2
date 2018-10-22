@@ -2,6 +2,7 @@ package BLL;
 
 import dao.CityDao;
 import dao.FlightDao;
+import model.CityEntity;
 import model.FlightEntity;
 
 import javax.servlet.ServletException;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @WebServlet(name="welcomeServlet", urlPatterns="/WelcomeServlet")
 public class WelcomeServlet extends HttpServlet {
+
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -24,75 +26,16 @@ public class WelcomeServlet extends HttpServlet {
         FlightDao flightDao = new FlightDao();
         Cookie[] cookies = request.getCookies();
         String n="";
+        Constants constants = new Constants();
         for (Cookie cookie : cookies) {
 
             if ("Adminlogged".equals(cookie.getName())) {
                 n=cookie.getValue();
             }
         }
-        out.print("<head>\n" +
-                "<style>\n" +
-                "#customers {\n" +
-                "    font-family: \"Trebuchet MS\", Arial, Helvetica, sans-serif;\n" +
-                "    border-collapse: collapse;\n" +
-                "    width: 100%;\n" +
-                "}\n" +
-                "\n" +
-                "#customers td, #customers th {\n" +
-                "    border: 1px solid #ddd;\n" +
-                "    padding: 8px;\n" +
-                "}\n" +
-                "\n" +
-                "#customers tr:nth-child(even){background-color: #f2f2f2;}\n" +
-                "\n" +
-                "#customers tr:hover {background-color: #ddd;}\n" +
-                "\n" +
-                "#customers th {\n" +
-                "    padding-top: 12px;\n" +
-                "    padding-bottom: 12px;\n" +
-                "    text-align: left;\n" +
-                "    background-color: #4CAF50;\n" +
-                "    color: white;\n" +
-                "}\n" +
-                "</style>\n" +
-                "<style>\n" +
-                "input[type=text], select {\n" +
-                "    width: 100%;\n" +
-                "    padding: 12px 20px;\n" +
-                "    margin: 8px 0;\n" +
-                "    display: inline-block;\n" +
-                "    border: 1px solid #ccc;\n" +
-                "    border-radius: 4px;\n" +
-                "    box-sizing: border-box;\n" +
-                "}\n" +
-                "\n" +
-                "input[type=submit] {\n" +
-                "    width: 15%;\n" +
-                "    background-color: #4CAF50;\n" +
-                "    color: white;\n" +
-                "    padding: 14px 20px;\n" +
-                "    margin: 8px 0;\n" +
-                "    border: none;\n" +
-                "    border-radius: 4px;\n" +
-                "    cursor: pointer;\n" +
-                "}" +
-                "\n" +
-                "input[type=submit]:hover {\n" +
-                "    background-color: #45a049;\n" +
-                "}\n" +
-                "\n" +
-                "div {\n" +
-                "    border-radius: 5px;\n" +
-                "    background-color: #f2f2f2;\n" +
-                "    padding: 20px;\n" +
-                "}\n" +
-                "</style>" +
-                "</head>");
+        out.print(constants.getAdminCss());
         out.print("<h3>Welcome " + n + "</h3>");
-        out.print(
-                        "  <form action=\"LogOutServlet\" method=\"POST\">\n" +
-                        "    <input type=\"submit\" value=\"Log Out\">\n" +
-                        "  </form>\n");
+        out.print(constants.getAdminLogOutButton());
         out.print("<table id=\"customers\">\n" +
                 "  <tr>\n" +
                 "    <th>Id</th>\n" +
@@ -118,46 +61,57 @@ public class WelcomeServlet extends HttpServlet {
 
         out.print("</table>");
 
-        out.print("<h3>Using CSS to style an HTML Form</h3>\n" +
+        out.print("<h3>Add a new flight</h3>\n" +
                 "\n" +
-                "<div style='float:left'>\n" +
+                "<div>\n" +
                 "  <form action=\"/action_page.php\">\n" +
-                "    <label for=\"fname\">First Name</label>\n" +
-                "    <input type=\"text\" id=\"fname\" name=\"firstname\" placeholder=\"Your name..\">\n" +
+                "    <label for=\"aType\">Airplane type</label><br>\n" +
+                "    <input type=\"text\" id=\"airplaneType\" name=\"airplaneType\" placeholder=\"Airplane type..\"><br>\n" +
                 "\n" +
-                "    <label for=\"lname\">Last Name</label>\n" +
-                "    <input type=\"text\" id=\"lname\" name=\"lastname\" placeholder=\"Your last name..\">\n" +
-                "\n" +
-                "    <label for=\"country\">Country</label>\n" +
-                "    <select id=\"country\" name=\"country\">\n" +
-                "      <option value=\"australia\">Australia</option>\n" +
-                "      <option value=\"canada\">Canada</option>\n" +
-                "      <option value=\"usa\">USA</option>\n" +
-                "    </select>\n" +
-                "  \n" +
-                "    <input type=\"submit\" value=\"Submit\">\n" +
-                "  </form>\n" +
-                "</div>");
+                "    <label for=\"dCity\">Departure City</label><br>\n" +
+                "    <select id=\"departureCity\" name=\"departureCity\">\n");
+
+//                "      <option value=\"australia\">Australia</option>\n" +
+//                "      <option value=\"canada\">Canada</option>\n" +
+//                "      <option value=\"usa\">USA</option>\n" +
+        List<CityEntity> cityEntities = cityDao.getAllCities();
+
+        for(CityEntity cityEntity: cityEntities)
+        {
+            out.print("<option value=\"" + cityEntity.getId() + "\">" + cityEntity.getCityName() + "</option>\n");
+        }
+
+        out.print("    </select><br>\n" +
+                "    <label for=\"arrivalDate\">Arrival Date</label><br>\n" +
+                "    <input type=\"text\" id=\"arrivalDate\" name=\"arrivalDate\" placeholder=\"Arrival Date..\"><br>\n"+
+                "    <label for=\"aCity\">Arrival City</label><br>\n" +
+                "    <select id=\"arrivalCity\" name=\"arrivalCity\">\n");
+
+        for(CityEntity cityEntity: cityEntities)
+        {
+            out.print("<option value=\"" + cityEntity.getId() + "\">" + cityEntity.getCityName() + "</option>\n");
+        }
+
+        out.print("    </select><br>\n" +
+                "    <label for=\"arrivalDate\">Arrival Date</label><br>\n" +
+                "    <input type=\"text\" id=\"arrivalDate\" name=\"arrivalDate\" placeholder=\"Arrival Date..\"><br>\n" +
+                "    <input type=\"submit\" value=\"Insert\"><br>\n" +
+                "  </form>\n" //+ "</div>"
+                );
 
         out.print(
-                "<div style='float:left'>\n" +
-                "<h3>Using CSS to style an HTML Form</h3>\n" +
+//                "<div style='float:left'>\n" +
+                "<h3>Insert new city</h3>\n" +
                 "\n" +
-                "  <form action=\"/action_page.php\">\n" +
-                "    <label for=\"fname\">First Name</label>\n" +
-                "    <input type=\"text\" id=\"fname\" name=\"firstname\" placeholder=\"Your name..\">\n" +
+                "  <form action=\"AddCityServlet\" method=\"POST\">\n" +
+                "    <label for=\"City\">City Name</label><br>\n" +
+                "    <input type=\"text\" id=\"cityName\" name=\"cityName\" placeholder=\"City name..\"><br>\n" +
                 "\n" +
-                "    <label for=\"lname\">Last Name</label>\n" +
-                "    <input type=\"text\" id=\"lname\" name=\"lastname\" placeholder=\"Your last name..\">\n" +
-                "\n" +
-                "    <label for=\"country\">Country</label>\n" +
-                "    <select id=\"country\" name=\"country\">\n" +
-                "      <option value=\"australia\">Australia</option>\n" +
-                "      <option value=\"canada\">Canada</option>\n" +
-                "      <option value=\"usa\">USA</option>\n" +
-                "    </select>\n" +
-                "  \n" +
-                "    <input type=\"submit\" value=\"Submit\">\n" +
+                "    <label for=\"longitude\">Longitude</label><br>\n" +
+                "    <input type=\"text\" id=\"longitude\" name=\"longitude\" placeholder=\"longitude..\"><br>\n" + "\n" +
+                "    <label for=\"latitude\">Latitude</label><br>\n" +
+                "    <input type=\"text\" id=\"latitude\" name=\"latitude\" placeholder=\"Latitude..\"><br>\n" +
+                "    <input type=\"submit\" value=\"Insert\"><br>\n" +
                 "  </form>\n" +
                 "</div>");
 

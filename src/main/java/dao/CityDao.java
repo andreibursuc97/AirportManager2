@@ -16,11 +16,35 @@ public class CityDao {
 
     public CityEntity getCityById(Integer cityId)
     {
-        Encrypt code = new Encrypt();
 
         entityManagerFactory = Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
         entityManager = entityManagerFactory.createEntityManager();
         CityEntity cityEntity = entityManager.find(CityEntity.class,cityId);
+
+        entityManagerFactory.close();
+        return cityEntity;
+    }
+
+    public List<CityEntity> getAllCities()
+    {
+        entityManagerFactory = Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
+        entityManager = entityManagerFactory.createEntityManager();
+        Query query = entityManager.createNamedQuery("CityEntity.getAllCities");
+        List<CityEntity> cityEntityList = query.getResultList();
+
+        entityManagerFactory.close();
+        return cityEntityList;
+    }
+
+    public CityEntity insertCity(CityEntity cityEntity)
+    {
+
+        entityManagerFactory = Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
+        entityManager = entityManagerFactory.createEntityManager();
+
+        entityManager.getTransaction().begin();
+        entityManager.persist(cityEntity);
+        entityManager.getTransaction().commit();
 
         entityManagerFactory.close();
         return cityEntity;

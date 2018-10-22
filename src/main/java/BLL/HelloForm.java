@@ -12,10 +12,6 @@ import java.io.PrintWriter;
 @WebServlet(name="helloForm", urlPatterns="/HelloForm")
 public class HelloForm extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Set response content type
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -45,5 +41,9 @@ public class HelloForm extends HttpServlet {
 //            rd.forward(request,response);
 
         }
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 }

@@ -5,12 +5,21 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "city", schema = "airport-schedule", catalog = "")
-//@NamedQuery(name="CityEntity.getCityById", query = "select c FROM CityEntity as c")
+@NamedQuery(name="CityEntity.getAllCities", query = "select c FROM CityEntity as c")
 public class CityEntity {
     private int id;
     private String cityName;
     private String longitude;
     private String latitude;
+
+    public CityEntity(String cityName, String longitude, String latitude) {
+        this.cityName = cityName;
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
+
+    public CityEntity() {
+    }
 
     @Id
     @Column(name = "id")
