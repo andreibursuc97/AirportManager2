@@ -65,11 +65,19 @@ public class Constants {
             "    <input type=\"submit\" value=\"Log Out\">\n" +
             "  </form>\n";
 
+    private final String userLogOutButton = "  <form action=\"UserLogOutServlet\" method=\"GET\">\n" +
+            "    <input type=\"submit\" value=\"Log Out\">\n" +
+            "  </form>\n";
+
     public String getAdminCss() {
         return adminCss;
     }
 
     public String getAdminLogOutButton() {
         return adminLogOutButton;
+    }
+
+    public String getUserLogOutButton() {
+        return userLogOutButton;
     }
 }

@@ -49,4 +49,16 @@ public class CityDao {
         entityManagerFactory.close();
         return cityEntity;
     }
+
+    public CityEntity getCityByName(String cityName)
+    {
+        entityManagerFactory = Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
+        entityManager = entityManagerFactory.createEntityManager();
+        Query query = entityManager.createNamedQuery("CityEntity.getCityByName");
+        query.setParameter("cityName",cityName);
+        List<CityEntity> cityEntityList = query.getResultList();
+
+        entityManagerFactory.close();
+        return cityEntityList.get(0);
+    }
 }

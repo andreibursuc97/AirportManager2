@@ -6,6 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "clients", schema = "airport-schedule", catalog = "")
+@NamedQuery(name="ClientsEntity.findByUsername", query = "FROM ClientsEntity c where c.username = :username")
 public class ClientsEntity {
     private int id;
     private String username;

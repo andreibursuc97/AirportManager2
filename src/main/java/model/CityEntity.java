@@ -5,7 +5,10 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "city", schema = "airport-schedule", catalog = "")
-@NamedQuery(name="CityEntity.getAllCities", query = "select c FROM CityEntity as c")
+@NamedQueries({
+        @NamedQuery(name = "CityEntity.getAllCities", query = "select c FROM CityEntity as c"),
+        @NamedQuery(name = "CityEntity.getCityByName", query = "select c FROM CityEntity as c where c.cityName =: cityName")
+})
 public class CityEntity {
     private int id;
     private String cityName;

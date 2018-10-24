@@ -23,7 +23,7 @@ public class AdminDAO {
         query.setParameter("username", username);
         List<AdministratorEntity> adminEntityList = query.getResultList();
         if (adminEntityList.isEmpty()) {
-            System.out.println("Username gresit");
+            System.out.println("Username gresit admin");
             return false;
         }
         AdministratorEntity admin = adminEntityList.get(0);
@@ -31,7 +31,7 @@ public class AdminDAO {
         System.out.println(code.codeToString(admin.getPasswordAdmin()));
         System.out.println(code.codeToString(code.code(parola)));
         if (!code.codeToString(admin.getPasswordAdmin()).equals(code.codeToString(code.code(parola)))) {
-            System.out.println("Parola Gresita");
+            System.out.println("Parola Gresita admin");
             return false;
         }
         entityManagerFactory.close();

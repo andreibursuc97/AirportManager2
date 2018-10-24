@@ -5,7 +5,11 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "flight", schema = "airport-schedule", catalog = "")
-@NamedQuery(name="FlightEntity.getAllFlights", query = "select f FROM FlightEntity as f")
+@NamedQueries({
+@NamedQuery(name="FlightEntity.getAllFlights", query = "select f FROM FlightEntity as f"),
+@NamedQuery(name="FlightEntity.getFlightById", query = "select f FROM FlightEntity as f where f.id =:id"),
+@NamedQuery(name="FlightEntity.deleteFlight", query = "delete FROM FlightEntity as f where f.id =:id")
+})
 public class FlightEntity {
     private int id;
     private String airplaneType;
@@ -13,6 +17,17 @@ public class FlightEntity {
     private String departureDate;
     private Integer arrivalCityId;
     private String arrivalDate;
+
+    public FlightEntity(String airplaneType, Integer departureCityId, String departureDate, Integer arrivalCityId, String arrivalDate) {
+        this.airplaneType = airplaneType;
+        this.departureCityId = departureCityId;
+        this.departureDate = departureDate;
+        this.arrivalCityId = arrivalCityId;
+        this.arrivalDate = arrivalDate;
+    }
+
+    public FlightEntity() {
+    }
 
     @Id
     @Column(name = "id")
