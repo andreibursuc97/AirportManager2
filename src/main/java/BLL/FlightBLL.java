@@ -50,4 +50,9 @@ public class FlightBLL {
         flightDao.updateFlight(flightEntity);
     }
 
+    public FlightEntity getFlightById(String flightId)
+    {
+        return flightDao.getFlightById(Integer.parseInt(flightId));
+    }
+
 }
