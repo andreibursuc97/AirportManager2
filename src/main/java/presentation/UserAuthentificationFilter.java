@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebFilter(filterName = "UserFilter", urlPatterns = "/UserServlet",servletNames = "UserServlet")
-
 public class UserAuthentificationFilter implements Filter {
 
     private ServletContext context;
