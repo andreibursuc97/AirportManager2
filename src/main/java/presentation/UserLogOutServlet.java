@@ -1,6 +1,4 @@
-package Servlets;
-
-import dao.AdminDAO;
+package presentation;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,10 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-@WebServlet(name="LogOutServlet", urlPatterns="/LogOutServlet")
-public class LogOutServlet extends HttpServlet {
+@WebServlet(name="UserLogOutServlet", urlPatterns="/UserLogOutServlet")
+public class UserLogOutServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //doGet(request, response);
@@ -25,7 +22,7 @@ public class LogOutServlet extends HttpServlet {
         String n="";
         for (Cookie cookie : cookies) {
 
-            if ("Adminlogged".equals(cookie.getName())) {
+            if ("Userlogged".equals(cookie.getName())) {
                 cookie.setValue("");
                 cookie.setPath("/");
                 cookie.setMaxAge(0);

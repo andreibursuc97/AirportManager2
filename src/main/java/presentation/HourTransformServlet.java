@@ -1,4 +1,4 @@
-package Servlets;
+package presentation;
 
 import BLL.CityBLL;
 import BLL.FlightBLL;
@@ -13,16 +13,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXB;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.channels.FileLock;
 
 @WebServlet(name="HourTransformServlet", urlPatterns="/HourTransformServlet")
 public class HourTransformServlet extends HttpServlet {

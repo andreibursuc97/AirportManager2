@@ -1,8 +1,6 @@
-package Servlets;
+package presentation;
 
 import BLL.FlightBLL;
-import dao.CityDao;
-import model.CityEntity;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

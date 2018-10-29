@@ -1,4 +1,4 @@
-package Servlets;
+package presentation;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name="UserLogOutServlet", urlPatterns="/UserLogOutServlet")
-public class UserLogOutServlet extends HttpServlet {
+@WebServlet(name="LogOutServlet", urlPatterns="/LogOutServlet")
+public class LogOutServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //doGet(request, response);
@@ -22,7 +22,7 @@ public class UserLogOutServlet extends HttpServlet {
         String n="";
         for (Cookie cookie : cookies) {
 
-            if ("Userlogged".equals(cookie.getName())) {
+            if ("Adminlogged".equals(cookie.getName())) {
                 cookie.setValue("");
                 cookie.setPath("/");
                 cookie.setMaxAge(0);

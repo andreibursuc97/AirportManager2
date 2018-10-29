@@ -1,5 +1,4 @@
-package Servlets;
-
+package presentation;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -8,15 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter(filterName = "UserFilter", urlPatterns = "/UserServlet",servletNames = "UserServlet")
-
-public class UserAuthentificationFilter implements Filter {
+@WebFilter(filterName = "AdminFilter", urlPatterns = "/WelcomeServlet",servletNames = "WelcomeServlet")
+public class AdminAuthenticationFilter implements Filter {
 
     private ServletContext context;
 
     public void init(FilterConfig fConfig) throws ServletException {
         this.context = fConfig.getServletContext();
-        this.context.log("UserAuthenticationFilter initialized");
+        this.context.log("AdminAuthenticationFilter initialized");
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -37,7 +35,7 @@ public class UserAuthentificationFilter implements Filter {
         Cookie loginCookie=null;
         for (Cookie cookie : cookies) {
 
-            if ("Userlogged".equals(cookie.getName())) {
+            if ("Adminlogged".equals(cookie.getName())) {
                 loginCookie = cookie;
             }
         }

@@ -1,4 +1,4 @@
-package Servlets;
+package presentation;
 
 import BLL.CityBLL;
 import BLL.Constants;
@@ -35,6 +35,7 @@ public class UserServlet extends HttpServlet {
         String departureCityTime="";
         String arrivalCityName="";
         String departureCityName="";
+
         Constants constants = new Constants();
         for (Cookie cookie : cookies) {
 

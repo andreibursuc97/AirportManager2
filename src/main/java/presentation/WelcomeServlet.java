@@ -1,4 +1,4 @@
-package Servlets;
+package presentation;
 
 import BLL.CityBLL;
 import BLL.Constants;
